@@ -22,10 +22,17 @@ Shopping Cart</a></li>
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>
 User Management <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="{{ route('user.signup') }}">signup</a></li>
-             <li><a href="#">user signin</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">logout</a></li>
+              @if(Auth::check())
+              <li><a href="{{ route('user.profile') }}">user profile</a></li>
+               <li role="separator" class="divider"></li>
+            <li><a href="{{ route('user.logout') }}">logout</a></li>
+              @else
+              <li><a href="{{ route('user.signup') }}">sign up</a></li>
+             <li><a href="{{ route('user.signin') }}">sign in</a></li>
+              
+              @endif
+            
+           
           </ul>
         </li>
       </ul>
